@@ -104,7 +104,7 @@ end
 
 
 def over?
-  if !full? && !won?
+  if !draw? && !won?
     false
   else
     true
