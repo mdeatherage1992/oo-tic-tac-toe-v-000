@@ -67,7 +67,6 @@ def turn
     move(index,current_player)
     display_board
   else
-    binding.pry
     turn
   end
 end
