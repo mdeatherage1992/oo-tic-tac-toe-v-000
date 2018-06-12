@@ -45,7 +45,7 @@ def position_taken?(index)
   !(@board[index].nil? || @board[index] == " ")
 end
 
-def valid_move?(index)
+def valid_move?(user_input,index)
   index.between?(0,8) && !position_taken?(index)
 end
 
