@@ -41,7 +41,7 @@ WIN_COMBINATIONS = [
 ]
 
 
-def position_taken?(index)
+def position_taken?(user_input,index)
   !(@board[index].nil? || @board[index] == " ")
 end
 
