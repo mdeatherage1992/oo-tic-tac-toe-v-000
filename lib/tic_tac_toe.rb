@@ -18,7 +18,7 @@ class TicTacToe
       end
 
       def move(board,index,current_player = "X")
-        board[index] = token
+        board[index] = current_player
       end
 
   def current_player
