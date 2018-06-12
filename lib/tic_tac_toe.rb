@@ -17,6 +17,10 @@ class TicTacToe
         puts " #{board[6]} | #{board[7]} | #{board[8]} "
       end
 
+      def move(@board,token = "X")
+        @board[index] = token
+      end
+
   def current_player
    turn_count % 2 == 0 ? "X" : "O"
  end
