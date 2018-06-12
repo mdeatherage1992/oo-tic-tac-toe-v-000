@@ -32,11 +32,7 @@ class TicTacToe
 
 
 
-def position_taken?(board, index)
-  !(board[index].nil? || board[index] == " ")
-end
-
-def position_taken?(board, index)
+def position_taken?
   !(board[index].nil? || board[index] == " ")
 end
 
@@ -52,7 +48,7 @@ WIN_COMBINATIONS = [
   [2,4,6]
 ]
 
-def won?(board)
+def won?
   WIN_COMBINATIONS.detect do |mini|
   if  mini.all? { |space| board[space] == "X"}
     return mini
@@ -62,7 +58,7 @@ def won?(board)
   end
 end
 
-def full?(board)
+def full?
   board.all? do |space|
     if space == " "
       false
@@ -72,11 +68,11 @@ def full?(board)
   end
 end
 
-def draw?(board)
+def draw?
 full?(board) && !won?(board)
 end
 
-def over?(board)
+def over?
   #binding.pry
   draw?(board) || won?(board)
   if full?(board)
@@ -89,7 +85,7 @@ def over?(board)
   end
 end
 
-def over?(board)
+def over?
   if !full?(board) && !won?(board)
     false
   else
@@ -97,7 +93,7 @@ def over?(board)
   end
 end
 
-def winner(board)
+def winner
   if wonder?(board) == "X"
     "X"
   elsif wonder?(board) == "O"
@@ -107,7 +103,7 @@ def winner(board)
   end
 end
 
-    def wonder?(board)
+    def wonder?
       WIN_COMBINATIONS.detect do |mini|
       if  mini.all? { |space| board[space] == "X"}
         return "X"
@@ -121,23 +117,23 @@ end
 
 
 
-def input_to_index(user_input)
+def input_to_index
   user_input.to_i - 1
 end
 
-def move(board, index, current_player)
+def move
   board[index] = current_player
 end
 
-def position_taken?(board, location)
+def position_taken?
   board[location] != " " && board[location] != ""
 end
 
-def valid_move?(board, index)
+def valid_move?
   index.between?(0,8) && !position_taken?(board, index)
 end
 
-def turn(board)
+def turn
   puts "Please enter 1-9:"
   input = gets.strip
   index = input_to_index(input)
@@ -150,7 +146,7 @@ def turn(board)
 end
 
 
-def play(board)
+def play
   until over?(board)
     turn(board)
   end
