@@ -1,5 +1,4 @@
 class TicTacToe
-end
 
 def position_taken?(board, index)
   !(board[index].nil? || board[index] == " ")
@@ -154,4 +153,6 @@ def play(board)
   elsif draw?(board)
     puts "Cat's Game!"
   end
+end
+
 end
