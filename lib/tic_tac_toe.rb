@@ -101,8 +101,8 @@ end
 
 
 
-def over?(board)
-  if !full?(board) && !won?(board)
+def over?
+  if !full? && !won?
     false
   else
     true
