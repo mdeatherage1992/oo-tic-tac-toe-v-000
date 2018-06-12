@@ -85,8 +85,8 @@ def won?
   end
 end
 
-def full?(board)
-  board.all? do |space|
+def full?
+  @board.all? do |space|
     if space == " "
       false
     else
