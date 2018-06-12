@@ -120,7 +120,7 @@ def winner(board)
   end
 end
 
-    def wonder?(board)
+    def wonder?
       WIN_COMBINATIONS.detect do |mini|
       if  mini.all? { |space| board[space] == "X"}
         return "X"
