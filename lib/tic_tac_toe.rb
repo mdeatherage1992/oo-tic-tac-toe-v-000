@@ -15,8 +15,7 @@ class TicTacToe
         puts " #{board[3]} | #{board[4]} | #{board[5]} "
         puts "-----------"
         puts " #{board[6]} | #{board[7]} | #{board[8]} "
-      end      
-  end
+      end    
 
   def current_player
    turn_count % 2 == 0 ? "X" : "O"
