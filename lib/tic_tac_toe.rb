@@ -111,9 +111,9 @@ def over?
 end
 
 def winner(board)
-  if wonder?(board) == "X"
+  if wonder? == "X"
     "X"
-  elsif wonder?(board) == "O"
+  elsif wonder? == "O"
     "O"
   else
     nil
@@ -122,9 +122,9 @@ end
 
     def wonder?
       WIN_COMBINATIONS.detect do |mini|
-      if  mini.all? { |space| board[space] == "X"}
+      if  mini.all? { |space| @board[space] == "X"}
         return "X"
-      elsif mini.all? { |space| board[space] == "O"}
+      elsif mini.all? { |space| @board[space] == "O"}
         return "O"
       end
     end
