@@ -48,14 +48,12 @@ def full?(board)
 end
 
 def draw?(board)
-<<<<<<< HEAD
 full?(board) && !won?(board)
 end
 
 def over?(board)
   #binding.pry
   draw?(board) || won?(board)
-=======
   if full?(board)
     true
   end
@@ -72,7 +70,6 @@ def over?(board)
   else
     true
   end
->>>>>>> 18d4a4ab08d04b31e1641135e8914bc74c965114
 end
 
 def winner(board)
