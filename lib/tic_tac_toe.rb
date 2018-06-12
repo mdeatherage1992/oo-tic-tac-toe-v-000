@@ -110,7 +110,7 @@ def over?
 
 end
 
-def winner(board)
+def winner
   if wonder? == "X"
     "X"
   elsif wonder? == "O"
