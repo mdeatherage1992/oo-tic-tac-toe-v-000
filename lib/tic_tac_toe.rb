@@ -21,18 +21,19 @@ class TicTacToe
    @board.count{|token| token == "X" || token == "O"}
  end
 
+WIN_COMBINATIONS = [
+  [0,1,2],
+  [3,4,5],
+  [6,7,8],
+  [0,3,6],
+  [1,4,7],
+  [2,5,8],
+  [0,4,8],
+  [2,4,6]
+]
 
 
-
-
-
-
-
-
-
-
-
-def position_taken?
+def position_taken?(board, index)
   !(board[index].nil? || board[index] == " ")
 end
 
@@ -48,7 +49,7 @@ WIN_COMBINATIONS = [
   [2,4,6]
 ]
 
-def won?
+def won?(board)
   WIN_COMBINATIONS.detect do |mini|
   if  mini.all? { |space| board[space] == "X"}
     return mini
@@ -58,7 +59,7 @@ def won?
   end
 end
 
-def full?
+def full?(board)
   board.all? do |space|
     if space == " "
       false
@@ -68,12 +69,12 @@ def full?
   end
 end
 
-def draw?
+def draw?(board)
+
 full?(board) && !won?(board)
 end
 
-def over?
-  #binding.pry
+def over?(board)
   draw?(board) || won?(board)
   if full?(board)
     true
@@ -85,15 +86,16 @@ def over?
   end
 end
 
-def over?
+def over?(board)
   if !full?(board) && !won?(board)
     false
   else
     true
   end
+
 end
 
-def winner
+def winner(board)
   if wonder?(board) == "X"
     "X"
   elsif wonder?(board) == "O"
@@ -103,7 +105,7 @@ def winner
   end
 end
 
-    def wonder?
+    def wonder?(board)
       WIN_COMBINATIONS.detect do |mini|
       if  mini.all? { |space| board[space] == "X"}
         return "X"
@@ -115,25 +117,43 @@ end
 
   board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
+def turn_count(board)
+  count = 0
+  board.each do |spaces|
+    if spaces != " "
+      count = count += 1
+    end
+  end
+  return count
+end
+
+def current_player(board)
+  if turn_count(board) % 2 == 0
+    "X"
+  else
+  "O"
+  end
+end
 
 
-def input_to_index
+
+def input_to_index(user_input)
   user_input.to_i - 1
 end
 
-def move
+def move(board, index, current_player)
   board[index] = current_player
 end
 
-def position_taken?
+def position_taken?(board, location)
   board[location] != " " && board[location] != ""
 end
 
-def valid_move?
+def valid_move?(board, index)
   index.between?(0,8) && !position_taken?(board, index)
 end
 
-def turn
+def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
   index = input_to_index(input)
@@ -146,7 +166,7 @@ def turn
 end
 
 
-def play
+def play(board)
   until over?(board)
     turn(board)
   end
@@ -158,5 +178,6 @@ def play
     puts "Cat's Game!"
   end
 end
+
 
 end
