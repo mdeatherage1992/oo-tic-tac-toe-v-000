@@ -149,15 +149,15 @@ end
 
 
 
-def play(board)
-  until over?(board)
-    turn(board)
+def play
+  until over?
+    turn
   end
-  if wonder?(board) == "X"
+  if wonder? == "X"
     puts "Congratulations X!"
-  elsif wonder?(board) == "O"
+  elsif wonder? == "O"
     puts "Congratulations O!"
-  elsif draw?(board)
+  elsif draw?
     puts "Cat's Game!"
   end
 end
